@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperDaddy Memecoin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,204,0,0.1) 0%, rgba(255,204,0,0) 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo::before {
+            content: "SD";
+            font-size: 80px;
+            font-weight: 800;
+            color: #1a1a2e;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffcc00, #ff9900);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 204, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #e0e0ff;
+        }
+        
+        /* Buttons Section */
+        .buttons-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            background: rgba(10, 10, 30, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+        
+        .action-btn {
+            width: 220px;
+            height: 220px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .action-btn i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .action-btn:hover i {
+            transform: scale(1.2);
+        }
+        
+        .twitter {
+            background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
+        }
+        
+        .telegram {
+            background: linear-gradient(135deg, #0088cc 0%, #0077b5 100%);
+        }
+        
+        .whitepaper {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+        }
+        
+        .contract {
+            background: linear-gradient(135deg, #2ed573 0%, #1dd1a1 100%);
+        }
+        
+        .contract-container {
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contract-container h2 {
+            margin-bottom: 20px;
+            color: #ffcc00;
+            font-size: 1.8rem;
+        }
+        
+        .contract-address {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            word-break: break-all;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            color: #ffcc00;
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, #ffcc00, #ff9900);
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2ed573;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            color: #a0a0c0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .action-btn {
+                width: 160px;
+                height: 160px;
+                font-size: 1.1rem;
+            }
+            
+            .action-btn i {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .action-btn {
+                width: 140px;
+                height: 140px;
+                font-size: 1rem;
+            }
+            
+            .action-btn i {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="logo"></div>
+        <h1>SuperDaddy Memecoin</h1>
+        <p>The next evolution in memecoin technology. SuperDaddy brings innovation, community, and massive potential to the crypto space. Join our revolution today!</p>
+    </section>
+    
+    <!-- Buttons Section -->
+    <section class="buttons-section">
+        <h2>Connect With SuperDaddy</h2>
+        <div class="buttons-container">
+            <a href="https://t.me/SUPERMANDADDY1" class="action-btn telegram" target="_blank">
+                <i class="fab fa-telegram"></i>
+                Telegram
+            </a>
+            
+            <a href="https://x.com/i/communities/1950953109653754266" class="action-btn twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+                Twitter
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1USrtYTeeWhoJY6aG2QSSOnbOZNmQW3a2/view?usp=sharing" class="action-btn whitepaper" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+                White Paper
+            </a>
+            
+            <div class="action-btn contract">
+                <i class="fas fa-wallet"></i>
+                Contract Address
+            </div>
+        </div>
+        
+        <div class="contract-container">
+            <h2>SuperDaddy Contract Address</h2>
+            <div class="contract-address">0xYOUR_CONTRACT_ADDRESS_HERE</div>
+            <button class="copy-btn">Copy Address</button>
+        </div>
+    </section>
+    
+    <div class="notification">Contract address copied to clipboard!</div>
+    
+    <footer>
+        <p>© 2023 SuperDaddy Memecoin. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Contract address copy functionality
+        const copyBtn = document.querySelector('.copy-btn');
+        const notification = document.querySelector('.notification');
+        const contractAddress = document.querySelector('.contract-address');
+        
+        copyBtn.addEventListener('click', () => {
+            // Create a temporary textarea to copy text
+            const textarea = document.createElement('textarea');
+            textarea.value = contractAddress.textContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        });
+        
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Observe elements
+        const elementsToAnimate = document.querySelectorAll('.hero, .buttons-section, .action-btn, .contract-container');
+        elementsToAnimate.forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
